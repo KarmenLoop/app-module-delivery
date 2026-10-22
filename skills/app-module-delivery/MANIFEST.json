@@ -1,0 +1,137 @@
+{
+  "format_version": 1,
+  "name": "app-module-delivery",
+  "version": "1.0.1",
+  "files": [
+    {
+      "path": "LICENSE",
+      "bytes": 4426,
+      "sha256": "9e503fa9d48e81fa697bee864789fd70e82b4fb06904085c5584531646f7ec4e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 2948,
+      "sha256": "8ccfe1de53911a907be828125ed7800647dfbe015a528d4d49327a5d95667222"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 8653,
+      "sha256": "05827336287c449aecde257f928737e6c46a33d4f99f8acc1ef2475196dfaac9"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 2560,
+      "sha256": "359f3cfe1bad1eaefb4176fd082c88db7d0ea1231dfb621280a823afccae1cdd"
+    },
+    {
+      "path": "VERSION",
+      "bytes": 6,
+      "sha256": "44e161e4495cac2cf7858043e9e6418e9579f0ddcfae826f9a372622968ce066"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 292,
+      "sha256": "0bc63c3f8e0ffbf08a6a88d37de2ecb7460fe6923340f22ce98cc7409913332c"
+    },
+    {
+      "path": "references/architecture.md",
+      "bytes": 7081,
+      "sha256": "cd475bce4533ba7801bc302cb046810b83b273b5db2c29b41ae067a4998f1dc0"
+    },
+    {
+      "path": "references/behavior-evals.md",
+      "bytes": 2990,
+      "sha256": "c5972339a2584f303155372bacac74589455925f65475654797c1e7e3a2940af"
+    },
+    {
+      "path": "references/delivery-recovery.md",
+      "bytes": 4782,
+      "sha256": "91fad755e7d7a393b1d9cdc051d8d89909dcef8554962e83e90a1f4adaba9a9d"
+    },
+    {
+      "path": "references/development.md",
+      "bytes": 7022,
+      "sha256": "806cb1e5ef1e296d4abed57eee9e60c389e13e52e9a266797f3f276c2b130811"
+    },
+    {
+      "path": "references/discovery.md",
+      "bytes": 9691,
+      "sha256": "eb14cdf021329aa71f0872350f0345933c148b754619b626b7a92de6ded4aa17"
+    },
+    {
+      "path": "references/platforms.md",
+      "bytes": 6562,
+      "sha256": "b153e39bd7e5800126308e5b8b23fe860761247e6bd7d8096456c3a1dd369f97"
+    },
+    {
+      "path": "references/testing.md",
+      "bytes": 7628,
+      "sha256": "68fc7d54a8c75d90b43a9b63a75ec9add1e4d82d97d67c3f18b99205d3a5ef22"
+    },
+    {
+      "path": "references/ui-ux.md",
+      "bytes": 8115,
+      "sha256": "e1db48b1b77d91a6193fe67c1749186acc52b82492a7c28b789113da9454c9b1"
+    },
+    {
+      "path": "scripts/verify_package.py",
+      "bytes": 9292,
+      "sha256": "81ab1fd1e6fb1735916534479d574f8157e5f41e7ef8b2a36a9135d31a2bf7c5"
+    },
+    {
+      "path": "templates/acceptance.md",
+      "bytes": 2375,
+      "sha256": "148d2b5a4701bbbb2bc4618ecd36ac41690b5fc379e801901beec56bd4bf9c4f"
+    },
+    {
+      "path": "templates/application-plan.md",
+      "bytes": 3962,
+      "sha256": "e7a61c77bd19e63180e972191ad13085cf11f1363f5a22de373b93bdd17dff7a"
+    },
+    {
+      "path": "templates/architecture.md",
+      "bytes": 3141,
+      "sha256": "e292b3aa034615c5fe130b0d76db8333f8910dcd42f47394dbb80f7dc9404903"
+    },
+    {
+      "path": "templates/interaction-contract.md",
+      "bytes": 1635,
+      "sha256": "06e508fce64fd32c502ca98355593fb159e6d285db555f0f0782a66664055fd5"
+    },
+    {
+      "path": "templates/module-design.md",
+      "bytes": 2378,
+      "sha256": "433d7a6bef52059a3a7c440ec48b87284e0e0d0fa742df802d01d02a0f211283"
+    },
+    {
+      "path": "templates/progress.md",
+      "bytes": 2253,
+      "sha256": "438ed328fcafda50706cfd27c9b29d0258aaf255d5f470e18cf1096e7dc96705"
+    },
+    {
+      "path": "validation/SELF_REVIEW.md",
+      "bytes": 2105,
+      "sha256": "b547f05a24fdda73b525cb41ce83bfe8ecb7d8de45ce743adae6b9a396b5b182"
+    },
+    {
+      "path": "validation/authoring-checks.json",
+      "bytes": 743,
+      "sha256": "753d9519817912b70fc72739bd26219a4e9266ae79ed327e59eaf8d0e740effd"
+    },
+    {
+      "path": "validation/test_verifier.py",
+      "bytes": 6354,
+      "sha256": "5cd0340b2353fa9041eace3c60107e40b22f5d4a50e72ce86775948512617533"
+    },
+    {
+      "path": "validation/verifier-tests-final.json",
+      "bytes": 11635,
+      "sha256": "e02be3314438bca5e5b8c3d5719bfe53af5c1c2d0af3fa4b41ede45e418a9839"
+    },
+    {
+      "path": "validation/verifier-tests-first.json",
+      "bytes": 10780,
+      "sha256": "26b8f8a2f40425621e56950ec0bd9aa87e7b668c1ad0c59e3531e471d4afee90"
+    }
+  ]
+}

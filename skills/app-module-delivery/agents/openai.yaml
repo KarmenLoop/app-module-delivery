@@ -1,0 +1,4 @@
+interface:
+  display_name: "App Module Delivery"
+  short_description: "Plan, build, integrate, and verify application modules"
+  default_prompt: "Use $app-module-delivery to plan, build, integrate, and verify this application or module using the requirements and decisions already provided."

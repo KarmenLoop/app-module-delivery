@@ -1,0 +1,27 @@
+{
+  "edition": "English public edition 1.0.1",
+  "status": "PASS",
+  "host": "macOS",
+  "local_paths_redacted": true,
+  "records": [
+    {
+      "command": "python -B <skill-creator>/scripts/quick_validate.py <repository-root>/skills/app-module-delivery",
+      "exit_code": 0,
+      "stdout": "Skill is valid!\n"
+    },
+    {
+      "command": "python3 -B skills/app-module-delivery/validation/test_verifier.py --report <temporary-output>/verifier-tests-final.json",
+      "exit_code": 0,
+      "tests_run": 14,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "excluded_scope": [
+    "agent behavior",
+    "native host loading",
+    "actual application runtime",
+    "device and performance acceptance",
+    "independent acceptance"
+  ]
+}

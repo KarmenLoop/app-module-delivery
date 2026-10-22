@@ -1,0 +1,180 @@
+{
+  "scope": "package verifier behavior in isolated temporary copies",
+  "status": "FAIL",
+  "tests_run": 13,
+  "failures": 0,
+  "errors": 1,
+  "records": [
+    {
+      "case": "test_archive_content_drift",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--archive",
+        "<temporary-test-root>/release.zip"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": true,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 23\n  },\n  \"errors\": [\n    \"Archive content mismatch: app-module-delivery/SKILL.md\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_broken_relative_link",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--structure-only"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 65,\n    \"questions\": 72,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Broken link: README.md:74: missing-reference.md\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_duplicate_question",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--structure-only"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 73,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Question inventory must contain ordered, unique Q01-Q72\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_invalid_manifest_shape",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"<temporary-test-root>/app-module-delivery/scripts/verify_package.py\", line 201, in <module>\n    sys.exit(main())\n  File \"<temporary-test-root>/app-module-delivery/scripts/verify_package.py\", line 193, in main\n    result = verify(args.root, args.archive, args.structure_only)\n  File \"<temporary-test-root>/app-module-delivery/scripts/verify_package.py\", line 120, in verify\n    if manifest.get(\"name\") != \"app-module-delivery\":\nAttributeError: 'list' object has no attribute 'get'\n"
+    },
+    {
+      "case": "test_manifest_content_drift",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Manifest version mismatch\",\n    \"Manifest content mismatch: VERSION\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_missing_manifest",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 22,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Missing MANIFEST.json\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_missing_required_resource",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--structure-only"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 22,\n    \"markdown_files\": 17,\n    \"relative_links\": 63,\n    \"questions\": 72,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Missing required file: templates/module-design.md\",\n    \"Broken link: SKILL.md:26: templates/module-design.md\",\n    \"Broken link: references/architecture.md:3: ../templates/module-design.md\",\n    \"Broken link: templates/application-plan.md:39: module-design.md\",\n    \"Broken link: validation/SELF_REVIEW.md:9: ../templates/module-design.md\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_relocated_archive",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/relocated/app-module-delivery/scripts/verify_package.py",
+        "--archive",
+        "<temporary-test-root>/release.zip"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": true,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 23\n  },\n  \"errors\": [],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_unclosed_fence",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--structure-only"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [\n    \"Unclosed Markdown fence: README.md\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_unsafe_archive_member",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--archive",
+        "<temporary-test-root>/release.zip"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 1,
+      "stdout": "{\n  \"status\": \"FAIL\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": true,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 24\n  },\n  \"errors\": [\n    \"Unsafe archive member: ../outside.txt\",\n    \"Archive file inventory mismatch\"\n  ],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_valid_archive",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--archive",
+        "<temporary-test-root>/release.zip"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": true,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 23\n  },\n  \"errors\": [],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_valid_manifest",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"package structure and manifest\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 22,\n    \"archive_members\": 0\n  },\n  \"errors\": [],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "case": "test_valid_structure",
+      "argv": [
+        "<python-executable>",
+        "-B",
+        "<temporary-test-root>/app-module-delivery/scripts/verify_package.py",
+        "--structure-only"
+      ],
+      "cwd": "<temporary-test-root>",
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"PASS\",\n  \"scope\": \"package structure\",\n  \"archive_checked\": false,\n  \"counts\": {\n    \"files\": 23,\n    \"markdown_files\": 18,\n    \"relative_links\": 64,\n    \"questions\": 72,\n    \"manifest_entries\": 0,\n    \"archive_members\": 0\n  },\n  \"errors\": [],\n  \"excluded_scope\": \"agent behavior, platform loading, and application runtime\"\n}\n",
+      "stderr": ""
+    }
+  ],
+  "excluded_scope": "agent decisions, platform loading, application behavior",
+  "publication_note": "Historical 1.0.0 verifier failure; local paths redacted. This is not an application test."
+}

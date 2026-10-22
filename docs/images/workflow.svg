@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="520" viewBox="0 0 1280 520" role="img" aria-labelledby="title desc">
+  <title id="title">App Module Delivery workflow</title>
+  <desc id="desc">Discover and plan, design responsibilities and interactions, implement real business increments, verify evidence, and retain a recovery point.</desc>
+  <defs><marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8" fill="none" stroke="#56736c" stroke-width="1.5"/></marker></defs>
+  <rect width="1280" height="520" rx="24" fill="#f3f4ef"/>
+  <text x="54" y="70" fill="#193d35" font-family="Arial, sans-serif" font-size="30" font-weight="700">From requirements to an observable result.</text>
+  <text x="54" y="107" fill="#4c6059" font-family="Arial, sans-serif" font-size="17">A reusable workflow for complete applications and application modules</text>
+  <g fill="#fff" stroke="#b7c8c1" stroke-width="1.5">
+    <rect x="54" y="160" width="265" height="190" rx="16"/><rect x="356" y="160" width="265" height="190" rx="16"/>
+    <rect x="658" y="160" width="265" height="190" rx="16"/><rect x="960" y="160" width="265" height="190" rx="16"/>
+  </g>
+  <g stroke="#56736c" stroke-width="2" marker-end="url(#arrow)"><path d="M322 255H348"/><path d="M624 255H650"/><path d="M926 255H952"/></g>
+  <g font-family="Arial, sans-serif">
+    <g fill="#54756a" font-size="13" font-weight="700"><text x="78" y="194">01 / DISCOVER</text><text x="380" y="194">02 / DESIGN</text><text x="682" y="194">03 / IMPLEMENT</text><text x="984" y="194">04 / VERIFY</text></g>
+    <g fill="#193d35" font-size="23" font-weight="700"><text x="78" y="236">Define the work</text><text x="380" y="236">Shape the module</text><text x="682" y="236">Connect the flow</text><text x="984" y="236">Inspect the result</text></g>
+    <g fill="#4c6059" font-size="16">
+      <text x="78" y="273">Users, rules, data, access</text><text x="78" y="300">Complete plan before code</text><text x="78" y="327">Explicit acceptance criteria</text>
+      <text x="380" y="273">Contracts and ownership</text><text x="380" y="300">Task-based UI and recovery</text><text x="380" y="327">Target-specific interactions</text>
+      <text x="682" y="273">Ready dependencies first</text><text x="682" y="300">Real operation and preview</text><text x="682" y="327">Correlated persisted results</text>
+      <text x="984" y="273">Tests and actual evidence</text><text x="984" y="300">Repair and regression</text><text x="984" y="327">Version-matched handoff</text>
+    </g>
+    <rect x="54" y="386" width="1171" height="73" rx="12" fill="#193d35"/>
+    <text x="80" y="418" fill="#fff" font-size="17" font-weight="700">Choose the next step from facts.</text>
+    <text x="80" y="442" fill="#dce8df" font-size="15">Preserve decisions, failures, evidence, dependencies, and a precise recovery point at every milestone.</text>
+  </g>
+</svg>
