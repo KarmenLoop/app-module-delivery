@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2 — 2026-10-23
+
+- Add selectable English and Simplified Chinese project and user guides.
+- Align download names and workflow illustrations with this release; retain historical evidence at its original version.
+
+
 ## 1.0.1 — October 22, 2026
 
 - Publish the complete English edition of the workflow.
