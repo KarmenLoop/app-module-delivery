@@ -53,7 +53,7 @@ def main():
         if path.suffix not in {".md", ".py", ".json", ".yml", ".yaml", ".svg", ".txt"} and path.name not in {"LICENSE", "VERSION"}:
             continue
         body = path.read_text(encoding="utf-8")
-        if han.search(body):
+        if path.suffix not in {".md", ".svg"} and han.search(body):
             errors.append("Non-English public text: " + rel.as_posix())
         if private.search(body):
             errors.append("Private local path: " + rel.as_posix())

@@ -1,51 +1,37 @@
 # App Module Delivery
 
-Version 1.0.1. An English public edition of the application-development workflow designed with KarmenLoop.
+English | [简体中文](README.zh-CN.md)
 
-Use it for complete applications, extensions, and module changes across selected desktop, mobile, web business, and CLI targets. Pure marketing websites belong in a website workflow.
+A planning and delivery skill for changing an application without losing track of its interfaces, user flows, and acceptance checks. Start with the existing project and the platforms it actually needs.
 
-## Use
+[Download v1.0.2](https://github.com/KarmenLoop/app-module-delivery/releases/tag/v1.0.2) · [Guide](docs/tutorial.en.md) · [Issues](https://github.com/KarmenLoop/app-module-delivery/issues)
 
-Read [SKILL.md](SKILL.md), or install the complete directory using [Platform setup](references/platforms.md). The main file loads stage-specific references as needed.
+## What it does
 
-~~~text
-Read /absolute/path/app-module-delivery/SKILL.md.
-Task: [application or module, current project, actual targets, requested scope].
-Reuse existing answers and inspect technical facts yourself.
-Deliver a complete plan, then continue already-authorized implementation,
-integration, actual operation, repair, and acceptance.
-Follow project ownership, tool permissions, and existing acceptance rules.
-~~~
+Use it for a complete application, an extension, or a module change. The package contains workflow instructions, references, and project-record templates; it is not an application runtime.
 
-No mandatory framework, model, external account, or other skill is required. Communicate in the user's language.
+![App Module Delivery workflow illustration](docs/images/workflow-v1.0.2.svg)
 
-## Resources
+*Workflow illustration for v1.0.2; not an application screenshot or runtime acceptance.*
 
-| Resource | Purpose |
-| --- | --- |
-| [Discovery](references/discovery.md) | 72 candidate questions and interview rules |
-| [Architecture](references/architecture.md) | Modules, interfaces, dependencies, data, state, targets |
-| [UI/UX](references/ui-ux.md) | Task research, workspaces, navigation, interaction, recovery |
-| [Development](references/development.md) | Technical choices, reuse, sequence, integration, previews |
-| [Testing](references/testing.md) | Observable results, defects, regression, final acceptance |
-| [Delivery/recovery](references/delivery-recovery.md) | Handoff, milestones, persistent progress, resumption |
-| [Platforms](references/platforms.md) | Seven host setup routes and honest capability limits |
-| [Evaluations](references/behavior-evals.md) | Scenarios for actual agent-behavior evaluation |
-| [Application plan](templates/application-plan.md) | Starting point for the six project-record templates |
-| [Validation](VALIDATION.md) | Actual checks, evidence boundaries, untested areas |
+## Start here
 
-## Verify
+Extract the ZIP and keep the entire app-module-delivery folder under one skill directory supported by your host, for example ~/.agents/skills/app-module-delivery. Use a fresh destination; keep references, templates, VERSION, LICENSE, and MANIFEST.json together.
 
-The verifier and its tests use Python 3.9 or later and the standard library:
+No API key or configuration file is consumed by the skill. Select the host, project path, target platforms, and authorized scope; the host must supply actual file, terminal, and browser capabilities.
 
-~~~sh
-python3 scripts/verify_package.py
-python3 -B validation/test_verifier.py
-python3 scripts/verify_package.py --archive /absolute/path/to/release.zip
-~~~
+## A first useful task
 
-The verifier reads files; its regression suite mutates isolated temporary copies. Checks cover resources, relative references, question inventory, Markdown fences, manifest, archive bytes, and CRC. They do not establish client loading, agent decisions, or application runtime.
+Load SKILL.md and describe one existing module, the change needed, and how a user will know it works. Review the resulting plan and acceptance checks before relying on implementation work.
 
-## License
+Follow one change through planning, integration, a real user operation, and recovery. Package verification checks files and references; it does not prove host decisions or application behavior.
 
-Copyright 2026 KarmenLoop. This is source-available under the [No-Modification License](LICENSE), not an OSI open-source license. Use and exact-copy redistribution are permitted under its conditions; modified workflow distributions require written permission. Project records completed from the supplied templates have an explicit permission in the license.
+## Questions
+
+**Which framework does it install?** None. It works with the project’s chosen stack and the host’s available tools.
+
+## Documentation and license
+
+[Download, setup, practice, and updates](docs/tutorial.en.md) · [LICENSE](LICENSE)
+
+KarmenLoop Source-Available No-Modification License 1.1. The original license terms govern use and redistribution; retain the included legal files. [KarmenLoop](https://karmenloop.com).

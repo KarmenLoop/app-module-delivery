@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "name": "app-module-delivery",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "files": [
     {
       "path": "LICENSE",
@@ -10,8 +10,13 @@
     },
     {
       "path": "README.md",
-      "bytes": 2948,
-      "sha256": "8ccfe1de53911a907be828125ed7800647dfbe015a528d4d49327a5d95667222"
+      "bytes": 2161,
+      "sha256": "a94a44a8c5f669331d3f00da03b8a28b7e102a4d3a27843c669c99802ecd50cf"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "bytes": 1993,
+      "sha256": "fcfd34d93d8418ca4d62441d580cd9cfe70b66a3d40e416fee030aa7f497d9a8"
     },
     {
       "path": "SKILL.md",
@@ -26,12 +31,27 @@
     {
       "path": "VERSION",
       "bytes": 6,
-      "sha256": "44e161e4495cac2cf7858043e9e6418e9579f0ddcfae826f9a372622968ce066"
+      "sha256": "9fd28642d3aca191e5c7fc2383cfd6fabb2aac8743f029dabb8989ac584e31bc"
     },
     {
       "path": "agents/openai.yaml",
       "bytes": 292,
       "sha256": "0bc63c3f8e0ffbf08a6a88d37de2ecb7460fe6923340f22ce98cc7409913332c"
+    },
+    {
+      "path": "docs/images/workflow-v1.0.2.svg",
+      "bytes": 1318,
+      "sha256": "a46e6e1261051d50ec8af6159b3044bd8efc7a47995fa0a0a8dbcdec4436d2ff"
+    },
+    {
+      "path": "docs/tutorial.en.md",
+      "bytes": 2611,
+      "sha256": "052f0d1a129535b9395ec0fdc863a00adccc8b645ec12a64a770c079707f8eb1"
+    },
+    {
+      "path": "docs/tutorial.zh-CN.md",
+      "bytes": 2413,
+      "sha256": "694a2a3f80cfa437f7fabccda7c33d47bb346287b514a3eef1666ed2b21bb486"
     },
     {
       "path": "references/architecture.md",

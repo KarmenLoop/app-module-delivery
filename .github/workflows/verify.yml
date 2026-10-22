@@ -25,3 +25,4 @@ jobs:
       - run: python -B scripts/check_repository.py
       - run: python -B skills/app-module-delivery/validation/test_verifier.py
       - run: python -B scripts/package_skill.py --output-dir dist
+      - run: python -B scripts/check_publication.py
