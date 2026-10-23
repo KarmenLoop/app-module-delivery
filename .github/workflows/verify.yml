@@ -22,6 +22,7 @@ jobs:
         with:
           python-version: "3.12"
       - run: python -m pip install -r requirements-dev.txt
+      - run: python -B -m unittest discover -s tests -v
       - run: python -B scripts/check_repository.py
       - run: python -B skills/app-module-delivery/validation/test_verifier.py
       - run: python -B scripts/package_skill.py --output-dir dist

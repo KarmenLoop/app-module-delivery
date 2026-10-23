@@ -1,37 +1,15 @@
 # App Module Delivery
 
-English | [简体中文](README.zh-CN.md)
+[English](README.md) · [中文](README.zh-CN.md) · **v1.1.0**
 
-A planning and delivery skill for changing an application without losing track of its interfaces, user flows, and acceptance checks. Start with the existing project and the platforms it actually needs.
+Plan an application, register its acceptance checks, and keep the actual results with the requirements they verify. The skill now includes a Python CLI/MCP adapter for Codex and Cursor.
 
-[Download v1.0.2](https://github.com/KarmenLoop/app-module-delivery/releases/tag/v1.0.2) · [Guide](docs/tutorial.en.md) · [Issues](https://github.com/KarmenLoop/app-module-delivery/issues)
+![Application delivery workflow](docs/images/workflow-v1.1.0.svg)
 
-## What it does
+The adapter runs exact commands registered by the workspace owner. It stores real exit codes, logs, and artifact hashes; changed evidence invalidates an earlier pass. A check can finish after its host connection closes, and the next connection recovers that same receipt without rerunning it.
 
-Use it for a complete application, an extension, or a module change. The package contains workflow instructions, references, and project-record templates; it is not an application runtime.
+Download the versioned ZIP from [Releases](https://github.com/KarmenLoop/app-module-delivery/releases/tag/v1.1.0). Python 3.11+ is required. Follow the [host tutorial](docs/tutorial.en.md). The installable skill is under `skills/app-module-delivery` in this repository and at the root of the skill ZIP.
 
-![App Module Delivery workflow illustration](docs/images/workflow-v1.0.2.svg)
+The adapter does not supply an agent model, GUI automation, device farm, deployment permission, or scheduler. It verifies registered checks; those checks must still cover the application's real behavior. This release completed a live Codex read and actual subprocess acceptance. Cursor tool discovery passed; a Cursor model turn remains unverified because of local authentication and usage limits.
 
-*Workflow illustration for v1.0.2; not an application screenshot or runtime acceptance.*
-
-## Start here
-
-Extract the ZIP and keep the entire app-module-delivery folder under one skill directory supported by your host, for example ~/.agents/skills/app-module-delivery. Use a fresh destination; keep references, templates, VERSION, LICENSE, and MANIFEST.json together.
-
-No API key or configuration file is consumed by the skill. Select the host, project path, target platforms, and authorized scope; the host must supply actual file, terminal, and browser capabilities.
-
-## A first useful task
-
-Load SKILL.md and describe one existing module, the change needed, and how a user will know it works. Review the resulting plan and acceptance checks before relying on implementation work.
-
-Follow one change through planning, integration, a real user operation, and recovery. Package verification checks files and references; it does not prove host decisions or application behavior.
-
-## Questions
-
-**Which framework does it install?** None. It works with the project’s chosen stack and the host’s available tools.
-
-## Documentation and license
-
-[Download, setup, practice, and updates](docs/tutorial.en.md) · [LICENSE](LICENSE)
-
-KarmenLoop Source-Available No-Modification License 1.1. The original license terms govern use and redistribution; retain the included legal files. [KarmenLoop](https://karmenloop.com).
+[License](LICENSE): KarmenLoop's published no-modification terms apply. Review those terms before redistribution. [KarmenLoop](https://karmenloop.com).

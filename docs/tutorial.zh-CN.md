@@ -1,37 +1,22 @@
-# App Module Delivery · 应用与模块交付: 使用指南
+# App Module Delivery v1.1.0 宿主教程
 
-[English](tutorial.en.md) | 简体中文 · [项目首页](../README.zh-CN.md)
+[English](tutorial.en.md) · [中文](tutorial.zh-CN.md)
 
-本指南对应 **v1.0.2**.
+1. 下载并解压当前技能 ZIP，使用 Python 3.11+，按许可证保持文件完整。仓库内入口为 `skills/app-module-delivery/scripts/host.py`；ZIP 内为 `app-module-delivery/scripts/host.py`。
+2. 在应用工作区创建 `.app-delivery-checks.json`，登记所有者批准的命令。每项必须包含精确 `argv` 数组，可选 `cwd`、`timeout_seconds`（1–60）、`expected_exit` 和工作区内 `artifacts`、`inputs` 路径。将变化后需要使结果失效的源码或配置列入 `inputs`；只有这些登记的输入与产物参与后续变化核对。应使用真正验证应用、生成实际产物的命令，不能以 echo 代替功能。
+3. 替换路径后，为两个宿主安装工作区配置：
 
-## 1. 下载与校验
+```sh
+python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application --install-host codex install
+python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application --install-host cursor install
+```
 
-从发行页下载 [`app-module-delivery-v1.0.2.zip`](https://github.com/KarmenLoop/app-module-delivery/releases/tag/v1.0.2)，同时保留校验文件或 manifest。比较完整 SHA-256 后再解压：macOS 使用 shasum -a 256，Linux 使用 sha256sum，PowerShell 使用 Get-FileHash -Algorithm SHA256。校验只能证明字节一致，预期哈希本身也需要可信来源。
+4. 重载宿主并批准特定服务，确认能发现 `app_init`、`app_run_check`、`app_status`、`app_export`。用 `app_init` 设置项目 ID、目标，并将需求 ID、标题映射到已登记的 `check_id`。
+5. 读取当前版本后，用项目、检查 ID、`expected_revision` 调用 `app_run_check`。检查真实退出码、日志、产物哈希与需求结果。失败后修复应用，再使用新版本号执行同一批准检查；适配器自身不会修复应用。
+6. `app_status` 会重新核对产物。变化或缺失会显示 `STALE`；命令配置改变需要重新审核并建立新计划。用 `app_export` 导出当前验收记录。
 
-## 2. 安装与加载
+无需模型也能调用：`python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application call app_status --input request.json`，输入 JSON 包含 `project_id`。
 
-解压 ZIP，将整个 app-module-delivery 文件夹放入宿主支持的一个技能目录，例如 ~/.agents/skills/app-module-delivery。使用新目录，保留 references、templates、VERSION、LICENSE 和 MANIFEST.json。
+宿主运行中退出时，等待原检查的有限超时窗口，再读取 `app_status`。独立的受控 runner 会保存终态收条，重连后只对账一次，不重复执行。若 runner 或电脑本身在写收条前被终止，状态保持运行中/未知并阻止重复运行，需人工检查原运行目录，不能按通过处理。每份日志有 8 MiB 轮询限制。
 
-刷新宿主发现或开启新会话，明确读取已安装的 SKILL.md，并核对上面版本。不需要为技能另开模型账号；宿主使用自己的模型、工具与权限。
-
-## 3. 配置与第一项任务
-
-技能本身不读取 API 密钥或配置文件。明确宿主、项目路径、目标平台与授权范围；文件、终端、浏览器等实际能力由宿主提供。
-
-加载 SKILL.md，说明现有的一个模块、需要改变的行为，以及用户如何判断可用。先检查生成的计划和验收标准，再依据实际交件判断实现是否完成。
-
-## 4. 进一步实践
-
-跟踪一次变更从计划、集成、真实用户操作到恢复的全过程。包验证只检查文件和引用，不能证明宿主决策或应用运行通过。
-
-保留当前版本、真实命令、退出码、结果与未验证限制。使用合成数据做首次检查。
-
-## 5. 排错、升级与移除
-
-宿主找不到技能时，先检查配置的技能根目录和 SKILL.md 可读性。哈希不一致时停止使用该包并重新核对下载；不要跳过错误。
-
-升级前完成当前写入，分别备份技能与私人任务数据。将新版本解压到新目录，核对后再切换；回退时恢复旧技能，保留较新的用户数据与证据。卸载只移除对应技能目录或发现入口；如曾另行注册调度，应在真实宿主中取消并确认。
-
-## 6. 许可证
-
-[KarmenLoop Source-Available No-Modification License 1.1](../LICENSE). 此处提供简明用户指南；具体使用和再分发条件以许可证原文为准。
+这是本地验收台账与登记命令执行器，不会生成设备证据、调度计划或额外执行授权。已在 macOS 完成真实子进程与 Codex 读取验收；Cursor 工具发现已通过，模型回合和 Windows/Linux 原生使用仍待验证。

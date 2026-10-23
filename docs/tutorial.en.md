@@ -1,37 +1,22 @@
-# App Module Delivery: user guide
+# App Module Delivery v1.1.0 host tutorial
 
-English | [简体中文](tutorial.zh-CN.md) · [Project](../README.md)
+[English](tutorial.en.md) · [中文](tutorial.zh-CN.md)
 
-This guide matches **v1.0.2**.
+1. Download and extract the versioned skill ZIP. Use Python 3.11+. Keep its files intact under the published license. In the repository, the script below is at `skills/app-module-delivery/scripts/host.py`; in the ZIP it is `app-module-delivery/scripts/host.py`.
+2. In the application workspace, create `.app-delivery-checks.json` with the commands the owner authorizes. Each named entry needs an exact `argv` array; optional fields are `cwd`, `timeout_seconds` (1–60), `expected_exit`, and workspace-relative `artifacts` and `inputs`. List the source/configuration files whose changes should invalidate the result in `inputs`. Only those declared inputs and artifacts are checked for later drift. Use a meaningful application check that writes a real result, not an echo standing in for a feature.
+3. Install the adapter in each host workspace. Substitute the actual script, private storage, and workspace paths:
 
-## 1. Download and verify
+```sh
+python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application --install-host codex install
+python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application --install-host cursor install
+```
 
-From the release, download [`app-module-delivery-v1.0.2.zip`](https://github.com/KarmenLoop/app-module-delivery/releases/tag/v1.0.2) and its checksum file or manifest. Compare the complete SHA-256 before extracting: use shasum -a 256 on macOS, sha256sum on Linux, or Get-FileHash -Algorithm SHA256 in PowerShell. Byte consistency relies on obtaining the expected hash from a trusted source.
+4. Reload, approve this specific server, and verify `app_init`, `app_run_check`, `app_status`, and `app_export` are listed. Use `app_init` to map requirement IDs/titles to registered `check_id` values and set a project ID and goal.
+5. Read the current revision. Call `app_run_check` with the project, check ID, and `expected_revision`. Inspect the real exit, logs, artifact hashes, and requirement results. Repair the application after a failure and run the same approved check again using the new revision. The adapter does not repair applications itself.
+6. `app_status` rechecks hashes. Changed/missing evidence becomes `STALE`; changing registered commands requires a newly reviewed plan. Export the current acceptance record with `app_export`.
 
-## 2. Install and load
+The same tools can be called without an agent: `python /path/to/host.py --root /private/app-acceptance --workspace /path/to/application call app_status --input request.json`, where the JSON contains `project_id`.
 
-Extract the ZIP and keep the entire app-module-delivery folder under one skill directory supported by your host, for example ~/.agents/skills/app-module-delivery. Use a fresh destination; keep references, templates, VERSION, LICENSE, and MANIFEST.json together.
+If a host exits during a running check, wait for that check's bounded timeout and read `app_status` again. A separate owned runner writes a durable terminal receipt; a new host reconciles it once. If the runner or computer itself is killed before a receipt is written, the state remains running/unknown and blocks a duplicate run. Inspect the saved run manually; no missing receipt is treated as a pass. Check output is limited to 8 MiB per log with polling enforcement.
 
-Refresh host discovery or open a new session, explicitly read the installed SKILL.md, and check the version above. The skill needs no separate model account; the host supplies its own model, tools, and permissions.
-
-## 3. Configure and try one task
-
-No API key or configuration file is consumed by the skill. Select the host, project path, target platforms, and authorized scope; the host must supply actual file, terminal, and browser capabilities.
-
-Load SKILL.md and describe one existing module, the change needed, and how a user will know it works. Review the resulting plan and acceptance checks before relying on implementation work.
-
-## 4. Develop a repeatable workflow
-
-Follow one change through planning, integration, a real user operation, and recovery. Package verification checks files and references; it does not prove host decisions or application behavior.
-
-Keep the version, actual command, exit code, resulting files, and unverified limits together. Use synthetic data for the first check.
-
-## 5. Troubleshoot, update, and remove
-
-If the host cannot find the skill, check its configured discovery root and SKILL.md readability. A checksum mismatch needs a fresh verified download; do not skip it.
-
-Finish active writes and back up the skill and private task data separately. Extract updates into a new directory and verify before switching. For rollback, restore the older skill while retaining newer user records and evidence. Uninstall only its exact skill directory or discovery entry; separately registered schedules must be cancelled and confirmed in their host.
-
-## 6. License
-
-[KarmenLoop Source-Available No-Modification License 1.1](../LICENSE). This is concise user guidance; consult the original license for use and redistribution terms.
+This adapter is a local acceptance ledger and registered-command runner. It does not create device evidence, a schedule, or execution permission beyond the registered checks. Codex live reading and local subprocess execution were accepted on macOS; Cursor protocol discovery passed, while its model conversation and native Windows/Linux use remain outstanding.

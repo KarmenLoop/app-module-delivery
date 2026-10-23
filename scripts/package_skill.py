@@ -34,6 +34,8 @@ def main():
     if args.refresh_manifest:
         files = []
         for path in sorted(SKILL.rglob("*")):
+            if "__pycache__" in path.parts or path.suffix == ".pyc":
+                continue
             if path.is_symlink():
                 raise ValueError("Unexpected symlink")
             if path.is_file() and path.name != "MANIFEST.json":
@@ -52,6 +54,8 @@ def main():
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w", compression=zipfile.ZIP_DEFLATED) as package:
         for path in sorted(SKILL.rglob("*")):
+            if "__pycache__" in path.parts or path.suffix == ".pyc":
+                continue
             if path.is_file():
                 item = zipfile.ZipInfo(SKILL.name + "/" + path.relative_to(SKILL).as_posix(),
                                        (2026, 10, 22, 0, 0, 0))

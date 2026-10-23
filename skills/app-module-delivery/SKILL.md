@@ -6,6 +6,10 @@ license: "See LICENSE"
 
 # App Module Delivery
 
+## Executable local adapter
+
+Read [the host adapter guide](references/host-adapter.md) when configuring Codex/Cursor or persisting real state. The bundled Python 3.11+ adapter supplies CLI and MCP operations. Verify actual tool calls; configuration and design contracts alone do not establish runtime behavior. Scheduling, remote identity, GUI control, and external actions still require their own authorized host capabilities.
+
 Turn user tasks into runnable, verifiable application capabilities. Select the actual desktop, mobile, web, and CLI targets. Share business rules and data contracts while respecting each platform's interaction conventions. Communicate in the user's language. Version: [VERSION](VERSION).
 
 ## 1. Establish the assignment
