@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "name": "app-module-delivery",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "files": [
     {
       "path": "LICENSE",
@@ -10,18 +10,18 @@
     },
     {
       "path": "README.md",
-      "bytes": 2161,
-      "sha256": "a94a44a8c5f669331d3f00da03b8a28b7e102a4d3a27843c669c99802ecd50cf"
+      "bytes": 468,
+      "sha256": "133b771410d148aaf5618e64576b2f1730c5926fd9d67dedb4522265346b6f66"
     },
     {
       "path": "README.zh-CN.md",
-      "bytes": 1993,
-      "sha256": "fcfd34d93d8418ca4d62441d580cd9cfe70b66a3d40e416fee030aa7f497d9a8"
+      "bytes": 468,
+      "sha256": "133b771410d148aaf5618e64576b2f1730c5926fd9d67dedb4522265346b6f66"
     },
     {
       "path": "SKILL.md",
-      "bytes": 8653,
-      "sha256": "05827336287c449aecde257f928737e6c46a33d4f99f8acc1ef2475196dfaac9"
+      "bytes": 9082,
+      "sha256": "5f42dbae0a042dee2eb6942b3296652c3d8b8f664bc321594573d761080b70d0"
     },
     {
       "path": "VALIDATION.md",
@@ -31,7 +31,7 @@
     {
       "path": "VERSION",
       "bytes": 6,
-      "sha256": "9fd28642d3aca191e5c7fc2383cfd6fabb2aac8743f029dabb8989ac584e31bc"
+      "sha256": "1575e1af4a95f12f70b4ee6a6adce8160953d93ea17dc2611b90883ccc3ad3b8"
     },
     {
       "path": "agents/openai.yaml",
@@ -79,6 +79,11 @@
       "sha256": "eb14cdf021329aa71f0872350f0345933c148b754619b626b7a92de6ded4aa17"
     },
     {
+      "path": "references/host-adapter.md",
+      "bytes": 3067,
+      "sha256": "350375d89fce0ada79b67df8b24054cac62ffd2edc663f9dbd821573bc09892b"
+    },
+    {
       "path": "references/platforms.md",
       "bytes": 6562,
       "sha256": "b153e39bd7e5800126308e5b8b23fe860761247e6bd7d8096456c3a1dd369f97"
@@ -94,9 +99,24 @@
       "sha256": "e1db48b1b77d91a6193fe67c1749186acc52b82492a7c28b789113da9454c9b1"
     },
     {
+      "path": "scripts/host.py",
+      "bytes": 7688,
+      "sha256": "983b1af72e3973bb69968f5416eba233eef339dd565cda35c1a7c605938386ce"
+    },
+    {
+      "path": "scripts/host_support.py",
+      "bytes": 10182,
+      "sha256": "3136f34de5723e2d08f362154bf2327940e7de50e1f2378b10103995ce37018c"
+    },
+    {
+      "path": "scripts/runner.py",
+      "bytes": 2391,
+      "sha256": "b9b14491164e3a550ee047aa7727d5d43dc94710b99ccb602b69eff922254ac9"
+    },
+    {
       "path": "scripts/verify_package.py",
-      "bytes": 9292,
-      "sha256": "81ab1fd1e6fb1735916534479d574f8157e5f41e7ef8b2a36a9135d31a2bf7c5"
+      "bytes": 9378,
+      "sha256": "a59d8fc075c0966412b2f1b5aabd9a9b49b8da95683186ff8b144056f79d072b"
     },
     {
       "path": "templates/acceptance.md",
@@ -140,8 +160,8 @@
     },
     {
       "path": "validation/test_verifier.py",
-      "bytes": 6354,
-      "sha256": "5cd0340b2353fa9041eace3c60107e40b22f5d4a50e72ce86775948512617533"
+      "bytes": 6662,
+      "sha256": "0e524ccca8b4414c40e366bed84b963902621d66c3991259810d086666f0f781"
     },
     {
       "path": "validation/verifier-tests-final.json",

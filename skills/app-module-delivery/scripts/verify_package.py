@@ -39,6 +39,8 @@ def verify(root, archive=None, structure_only=False):
 
     files = {}
     for path in sorted(root.rglob("*")):
+        if "__pycache__" in path.parts or path.suffix == ".pyc":
+            continue
         rel = path.relative_to(root).as_posix()
         if path.is_symlink():
             errors.append("Symlink is not portable: " + rel)

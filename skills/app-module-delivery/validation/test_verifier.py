@@ -48,7 +48,7 @@ class VerifierTests(unittest.TestCase):
         self.addCleanup(self.temporary.cleanup)
         self.base = Path(self.temporary.name)
         self.root = self.base / "app-module-delivery"
-        shutil.copytree(SOURCE, self.root)
+        shutil.copytree(SOURCE, self.root, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
         write_manifest(self.root)
 
     def check_result(self, expected, args=(), root=None):
@@ -63,6 +63,12 @@ class VerifierTests(unittest.TestCase):
         self.assertEqual(data["status"], expected)
         self.assertEqual(bool(data.get("errors")), expected == "FAIL")
         return data
+
+    def test_runtime_cache_does_not_change_package_identity(self):
+        cache = self.root / "scripts/__pycache__"
+        cache.mkdir()
+        (cache / "host_support.cpython-312.pyc").write_bytes(b"runtime cache")
+        self.check_result("PASS")
 
     def test_valid_structure(self):
         data = self.check_result("PASS", ["--structure-only"])
